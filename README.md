@@ -19,9 +19,29 @@ Additionally, this repository contains **7 models** implemented in PyTorch and P
 
 ## Proposed Model Architecture (Ensemble QCNN)
 
-The Ensemble QCNN operates by extracting multi-scale feature maps from pre-trained ResNet-50 and VGG-19 backbones. These feature maps are concatenated and passed through a **1x1 convolution** layer which fuses channels and performs spatial-channel reduction to project the representation to $4$ features (1 feature per qubit). Global Average Pooling (GAP) reduces spatial dimensions to a $4$-dimensional vector.
+The proposed Ensemble QCNN is a hybrid quantum-classical framework designed for multi-class brain tumor classification from MRI images. The architecture combines the complementary feature extraction capabilities of VGG-19 and ResNet-50 to capture both local and high-level tumor characteristics. The extracted representations are integrated and processed through a quantum-enhanced learning module, enabling the model to learn complex feature relationships beyond conventional deep learning approaches.
 
-The vector is mapped to a 4-qubit quantum system using RX and RZ rotations. The quantum convolution layer applies parameterized RX and RZ rotations on all qubits followed by cyclic CNOT entanglement. A SWAP-test based quantum pooling layer compares qubit pairs (0 vs 1 using ancilla 4, and 2 vs 3 using ancilla 5) to compute overlap similarity. Expectation values of PauliZ on the 2 ancilla qubits yield a 2-dimensional pooled representation, which is mapped to class logits via a final linear layer.
+The quantum component performs feature transformation, correlation learning, and dimensionality reduction before the final classification stage. By leveraging both classical transfer learning and quantum feature processing, the proposed framework aims to improve discriminative capability while maintaining efficient model complexity.
+
+---
+
+## Experimental Results
+
+The proposed Ensemble QCNN was evaluated against six benchmark architectures, including Classical CNN, DenseNet121, VGG19, ResNet50, Ensemble CNN, and a Hybrid Quantum CNN (HQC-CNN).
+
+| Model | Test Accuracy (%) | Precision | Recall | F1-Score |
+|---------|---------|---------|---------|---------|
+| Classical CNN | 87.46 | 0.8621 | 0.8654 | 0.8637 |
+| DenseNet121 | 89.46 | 0.8837 | 0.8815 | 0.8813 |
+| VGG19 CNN | 88.46 | 0.8740 | 0.8780 | 0.8747 |
+| ResNet50 CNN | 93.14 | 0.9263 | 0.9250 | 0.9256 |
+| Ensemble CNN | 93.31 | 0.9269 | 0.9315 | 0.9287 |
+| HQC-CNN | 79.26 | 0.7885 | 0.7654 | 0.7686 |
+| **Proposed Ensemble QCNN** | **93.48** | **0.9315** | **0.9282** | **0.9294** |
+
+### Performance Summary
+
+The proposed **Ensemble QCNN achieved the highest overall classification accuracy of 93.48%**, outperforming all benchmark models evaluated in this study. Compared to the strongest classical baseline (**Ensemble CNN**, 93.31%), the proposed model achieved a modest but consistent improvement while also obtaining the highest macro-precision and F1-score. These results demonstrate the effectiveness of combining transfer learning-based feature extraction with quantum-enhanced representation learning for brain tumor MRI classification.
 
 ---
 
