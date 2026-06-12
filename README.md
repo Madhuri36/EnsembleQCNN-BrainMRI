@@ -28,14 +28,14 @@ The vector is mapped to a 4-qubit quantum system using RX and RZ rotations. The 
 ## File Structure
 
 ```
-C:\Users\saima\.gemini\antigravity\scratch\quantum_mri_classification/
-├── data_preprocessing.py      # Downloads, extracts, parses MAT files, outputs PNG dataset
-├── models.py                  # PyTorch + PennyLane module definitions for the 7 networks
-├── train.py                  # Standardized training loop with learning rate schedules
-├── evaluate.py               # Test set validation, confusion matrix & ROC curve plotting
-├── run_experiments.py        # Automation script to train & evaluate all 7 models sequentially
-├── Kaggle_Notebook.ipynb     # Self-contained Kaggle-ready notebook
-└── README.md                 # Setup and execution instructions (this file)
+Quantum-Brain-Tumor-Classification/
+├── data_preprocessing.py               # Downloads, extracts, parses MAT files, outputs PNG dataset
+├── models.py                           # PyTorch + PennyLane module definitions for the 7 networks
+├── train.py                            # Standardized training loop with learning rate schedules
+├── evaluate.py                         # Test set validation, confusion matrix & ROC curve plotting
+├── run_experiments.py                  # Automation script to train & evaluate all 7 models sequentially
+├── Brain_Tumor_Ensemble_QCNN.ipynb     # Self-contained Kaggle-ready notebook
+└── README.md                           # Setup and execution instructions (this file)
 ```
 
 ---
@@ -93,7 +93,7 @@ This saves:
 ## Kaggle Integration
 
 To run on Kaggle:
-1. Upload the `Kaggle_Notebook.ipynb` file directly as a Kaggle Notebook.
+1. Upload the `Brain_Tumor_Ensemble_QCNN.ipynb` file directly as a Kaggle Notebook.
 2. In the right panel under **Settings**, set the **Accelerator** to **GPU T4 x2** or **GPU P100**.
 3. Under **Internet**, ensure it is turned **ON** (required to download the dataset from Figshare and install `pennylane` via pip).
 4. Run all cells. The notebook will automatically download the dataset, execute the preprocessing, train all 7 models, and generate the comparative plots and tables.
